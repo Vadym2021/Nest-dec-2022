@@ -9,7 +9,7 @@ import { PostgresqlConfigService } from './configuration.service';
       load: [configuration],
     }),
   ],
-  providers: [PostgresqlConfigService, ConfigService],
-  exports: [PostgresqlConfigService, ConfigService],
+  providers: [ConfigService, PostgresqlConfigService],
+  exports: [ConfigService, PostgresqlConfigService],
 })
 export class PostgresqlConfigModule {}

@@ -14,7 +14,7 @@ export class TypeOrmConfiguration {
         password: configService.password,
         database: configService.database,
         synchronize: true,
-        entities: [`${process.cwd()}/**/*.entity{.js,.ts}`],
+        entities: [`${process.cwd()}/**/*.entity{.js, .ts}`],
         migrationsTableName: 'migrations',
       }),
       inject: [PostgresqlConfigService],
