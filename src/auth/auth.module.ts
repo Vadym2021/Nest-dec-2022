@@ -30,6 +30,6 @@ import { BearerStrategy } from './bearer.strategy';
     }),
   ],
   providers: [AuthService, BearerStrategy],
-  exports: [PassportModule, AuthService],
+  exports: [PassportModule, AuthService, BearerStrategy],
 })
 export class AuthModule {}
