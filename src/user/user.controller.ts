@@ -12,7 +12,11 @@ import {
 } from '@nestjs/common';
 import { ApiExtraModels, ApiTags } from '@nestjs/swagger';
 import { UserService } from './user.service';
-import { UserCreateDto } from './dto/user.dto';
+import {
+  UserCreateDto,
+  UserLoginDto,
+  UserLoginSocialDto,
+} from './dto/user.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { PublicUserInfoDto } from '../common/query/user.query.dto';
 import { PublicUserData } from './interface/user.interface';
@@ -42,6 +46,16 @@ export class UserController {
   @Post('account/:userId/animal')
   async addAnimalToUser() {
     return 'New User';
+  }
+
+  @Post('login')
+  async loginUser(@Body() body: UserLoginDto) {
+    return this.userService.login(body);
+  }
+
+  @Post('social/login')
+  async loginSocialUser(@Body() body: UserLoginSocialDto) {
+    return this.userService.loginSocial(body);
   }
 
   @Delete(':userId')
