@@ -1,9 +1,7 @@
 import {
   Entity,
   Column,
-  PrimaryGeneratedColumn,
-  OneToOne,
-  JoinColumn,
+  PrimaryGeneratedColumn, ManyToOne,
 } from 'typeorm';
 import { User } from '../user/user.entity';
 
@@ -24,7 +22,6 @@ export class Animal {
   @Column({ type: 'int', nullable: true })
   age: number;
 
-  @OneToOne(() => User)
-  @JoinColumn()
+  @ManyToOne(() => User, (entity) => entity.animals)
   user: User;
 }

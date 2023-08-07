@@ -124,11 +124,11 @@ export class UserService {
 
       const tokenPayload = result.getPayload();
 
-      const token = await this.signIn({ id: tokenPayload.sub });
-      return { token };
+      // const token = await this.signIn({ id: tokenPayload.sub });
+      // return { token };
 
       // console.log(result);
-      // return 'ok';
+      return 'ok';
     } catch (e) {
       throw new HttpException(
         'Google authorization failed',

@@ -1,5 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  ManyToMany, JoinColumn,
+} from 'typeorm';
 import { Animal } from '../animal/animal.entity';
+import { Car } from '../car/car.entity';
 
 @Entity()
 export class User {
@@ -12,6 +19,9 @@ export class User {
   @Column({ type: 'varchar', nullable: false, unique: true })
   email: string;
 
+  @Column({ type: 'varchar', nullable: false, unique: true })
+  email2: string;
+
   @Column({ type: 'boolean', default: true })
   isActive: boolean;
 
@@ -21,6 +31,9 @@ export class User {
   @Column({ type: 'varchar', nullable: false })
   password: string;
 
-  @OneToMany(() => Animal, (animal) => animal.user, { cascade: true })
+  @OneToMany(() => Animal, (entity) => entity.user, { cascade: true })
   animals: Animal[];
+
+  @ManyToMany(() => Car, (entity) => entity.users)
+  cars: Car[];
 }
